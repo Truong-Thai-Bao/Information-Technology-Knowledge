@@ -341,111 +341,204 @@ main{
      }
 
 /*LOGIN*/
-input[type=text], input[type=password] {
-     width: 100%;
-     padding: 12px 20px;
-     margin: 8px 0;
-     display: inline-block;
-     border: 1px solid #ccc;
-     box-sizing: border-box;
-     border-radius: 10px;
+.blocklogin{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+     z-index: 99;
+}
+
+.wrapper{
+     /* position: absolute; */
+     top: 20%;
+     left: 35%;
+     /* transform: translate(-50%, -50%); */
+     width: 400px;
+     height: 440px;
+     /* background: transparent; */
+     background: linear-gradient(white, silver);
+     border: 2px solid rgba(255, 255, 255, .5);
+     border-radius: 20px;
+     /* backdrop-filter: blur(20px); */ /*làm mờ nền*/
+     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;
+     transform:  scale(0);
+     transition: transform .5s ease, height .2 ease;
    }
    
-/* Đặt kiểu cho tất cả các nút */
-   button {
-     background-color: darkblue;
-     color: white;
-     padding: 14px 20px;
-     margin: 8px 0;
-     border: none;
-     cursor: pointer;
-     width: 100%;
-     border-radius: 10px;
+   .wrapper.active-popup{
+     transform:  scale(1);
+   
    }
    
-   button:hover {
-     opacity: 0.8;
+   .wrapper.active{
+     height: 520px;
    }
    
-/*bổ sung cho nút hủy */
-  .cancelbtn {
-     width: auto;
-     padding: 10px 18px;
-     background-color: #f44336;
+   .wrapper .form-box{
+     width: 80%;
+     padding: 40px;
    }
    
-  /* Căn giữa hình ảnh và định vị nút đóng */
-   .imgcontainer {
-     text-align: center;
-     margin: 24px 0 12px 0;
-     position: relative;
+   .wrapper .form-box.login{
+     transition: transfrom .18s ease;
+     transform: translateX(0);
    }
    
-   
-   .container {
-     padding: 16px;
+   .wrapper.active .form-box.login{
+     transition: none;
+     transform: translateX(-400px);
    }
    
-   span.psw {
-     float: right;
-     padding-top: 16px;
-   }
-   
-/* nền đăng nhập */
-   .modal {
-     display: none; 
-     position: fixed; /*khóa hiện trên màn hình*/
-     z-index: 1; /*để login lên trên*/
-     left: 0;
-     top: 0;
-     width: 100%; 
-     height: 100%; 
-     overflow: auto; /* cho phép cuộn */
-     background-color: rgba(0,0,0,0.4); /* làm tối nền ngoài */
-     padding-top: 60px;
-   }
-   
-/* Nội dung */
-   .modal-content {
-     border-radius: 10px;
-     background: silver;
-     margin: 5% auto 15% auto; /*vị trí*/
-     border: 1px solid #888;
-     width: 500px; 
-   }
-   
-/* Đóng button */
-   .close {
+   .wrapper .form-box.register{
      position: absolute;
-     right: 25px;
+     transition: none;
+     transform: translateX(400px);
+   }
+   
+   .wrapper.active .form-box.register{
+     transition: transfrom .18s ease;
+     transform: translateX(0);
+   }
+   
+   
+   .wrapper .icon-close{
+     position: absolute;
      top: 0;
-     color: #000;
-     font-size: 35px;
-     font-weight: bold;
+     right: 0;
+     width: 45px;
+     height: 45px;
+     background: #162938;
+     font-size: 1.5rem;
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-bottom-left-radius: 20px;
+     cursor: pointer; /*đổi con trỏ chuột*/
+     z-index: 1;
    }
    
-   .close:hover,
-   .close:focus {
-     color: red;
+   .form-box h2{
+     font-size: 2rem;
+     color: #162938;
+     text-align: center;
+   }
+   
+   .input-box{
+     position: relative;
+     width: 100%;
+     height: 50px;
+     border-bottom: 2px solid #162938;
+     margin: 30px 0;
+   }
+   
+   .input-box label{
+     position: absolute;
+     top: 50%;
+     left: 5px;
+     transform: translateY(-50%);
+     font-size: 1rem;
+     color: #162938;
+     font-weight: 500px;
+     pointer-events: none;
+     transition: .5s;
+   }
+   
+   .input-box input:focus~label,
+   .input-box input:valid~label{
+     top: -5px; 
+   }
+   
+   .input-box input{
+     width: 100%;
+     height: 100%;
+     background: transparent;
+     border: none;
+     outline: none;
+     font-size: 1rem;
+     color: #162938;
+     font-weight: 600;
+     padding: 0 35px 0 5px;
+   }
+   
+   .input-box .icon{
+     position: absolute;
+     right: 8px;
+     font-size: 1.2rem;
+     color: #162938;
+     line-height: 57px;
+   }
+   
+   .remember-forgot{
+     font-size: 1rem;
+     color: #162938;
+     font-weight: 500;
+     margin: -15px 0 15px;
+     display: flex;
+     justify-content: space-between;
+   }
+   
+   .remember-forgot label input{
+     accent-color: #162938;
+     margin-right: 3px;
+   }
+   
+   .remember-forgot a{
+     color: #162938;
+     text-decoration: none;
+   }
+   
+   .remember-forgot a:hover{
+     text-decoration: underline;
+   }
+   
+   .btn{
+     width: 100%;
+     height: 45px;
+     background: #162938;
+     border: none;
+     outline: none;
+     border-radius: 5px;
      cursor: pointer;
+     font-size: 1rem;
+     color: white;
+     font-weight: 500;
    }
    
-/* Hiệu ứng zoom */
-   .animate {
-     -webkit-animation: animatezoom 0.6s;
-     animation: animatezoom 0.6s
+   .login-register{
+     font-size: .9rem;
+     color: #162938;
+     text-align: center;
+     font-weight: 500;
+     margin: 25px 0 10px;
    }
    
-   @-webkit-keyframes animatezoom {
-     from {-webkit-transform: scale(0)} 
-     to {-webkit-transform: scale(1)}
-   }
-     
-   @keyframes animatezoom {
-     from {transform: scale(0)} 
-     to {transform: scale(1)}
+   .login-register p a {
+     color: #162938;
+     text-decoration: none;
+     font-weight: 600;
    }
    
+   .login-register p a:hover{
+     text-decoration: underline;
+   }
 
 
-   
+   /*GO TO TOP*/
+#backtop{
+     width: 50px;
+     height: 50px;
+     background: tomato;
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+     bottom: 40px;
+     right: 20px;
+}

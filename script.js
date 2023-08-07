@@ -1,3 +1,4 @@
+
 function Langs(){
     fetch("Data/Languages.json").then(res=>res.json()).then(Data=>{
         let d=document.getElementById("languages");
@@ -74,17 +75,15 @@ function Content(){
             }
             d.innerHTML += s;   
         })
+        
 }
 window.onload=()=>{ 
     Langs();
     Ads();
     Content();
 
-
-
     var suggestionList = $(".suggestion-list");
     var searchInput = $(".search-input");
-
     searchInput.on("input", function () {
         var searchText = $(this).val().toLowerCase(); 
         suggestionList.empty();
@@ -102,7 +101,11 @@ window.onload=()=>{
         } else if (searchText.length === 0 && suggestionList.is(":visible")) {
             suggestionList.slideUp();
         }
+    
+        
     });
+
+
 
     suggestionList.on("click", "li", function () {
         if($(window).width() <= 700) {
@@ -128,12 +131,42 @@ window.onload=()=>{
 }
 
 
-var modal = document.getElementById('id01');
+document.addEventListener("DOMContentLoaded", function() {
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+    const btnPopup = document.querySelector('.btnLogin-popup');
+    const iconClose = document.querySelector('.icon-close');
 
-// Khi người dùng click ngoài vùng thì close
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-} 
+    registerLink.addEventListener('click', ()=> {
+         wrapper.classList.add('active')
+    });
 
+    loginLink.addEventListener('click', ()=> {
+         wrapper.classList.remove('active')
+    });
+
+    btnPopup.addEventListener('click', ()=> {
+         wrapper.classList.add('active-popup')
+    });
+
+    iconClose.addEventListener('click', ()=> {
+         wrapper.classList.remove('active-popup')
+    })
+}); 
+
+$(document).ready(() => {
+    $("#backtop").hide();
+    $("#backtop").click(() => {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 1000);
+    });
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= 100){
+            $("#backtop").show("slow")
+        } else{
+            $("#backtop").hide("slow")
+        }
+    })
+});
