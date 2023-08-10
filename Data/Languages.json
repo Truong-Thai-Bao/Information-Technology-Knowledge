@@ -1,15 +1,20 @@
 [{
-    "name":"Ruby"
+    "name":"C++",
+    "src":"http://127.0.0.1:5501/c++.html"
 },
 {
-    "name":"Python"
+    "name":"Python",
+    "src":"http://127.0.0.1:5501/python.html"
 },
 {
-    "name":"C#"
+    "name":"C#",
+    "src":"http://127.0.0.1:5501/csharp.html"
 },
 {
-    "name":"Java"
+    "name":"Java",
+    "src":"http://127.0.0.1:5501/java.html"
 },
 {
-    "name":"JavaScript"
+    "name":"JavaScript",
+    "src":"http://127.0.0.1:5501/javascript.html"
 }]

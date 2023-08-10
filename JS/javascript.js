@@ -4,7 +4,7 @@ function Langs(){
         let d=document.getElementById("languages");
         let s="";
         for(let l of Data)
-            s+=`<li><a href="#">${l.name}</a></li>`;
+            s+=`<li><a href="${l.src}">${l.name}</a></li>`;
         d.innerHTML+=s;
     })
 }
@@ -19,63 +19,67 @@ function Ads(){
     })
 }
 
-function Content(){
-        fetch("Data/art.json").then(res => res.json()).then(Data => {
-            let d = document.getElementById("con");
-            let s = "";
-            const langKeys = Object.keys(Data).filter(key => key.startsWith("lang"));
-            const langs = langKeys.map(key => Data[key]);
-            let langItems = "";
-             for (let i = 0; i < Data.length; i++) {
-                let l = Data[i];
-                if(langs[i])//Kiểm tra null trước khi chạy
-                    for (let j = 0; j < langs[i].length; j++) {
-                        langItems += `<li><a href="#">${langs[i][j]}</a></li>`;
-                    }
-    
-                s += `
-                <div class="art flex">
-                    <div class="lef">
-                        <div><h4 class="text">${l.vote} Votes</h4></div>
-                        <div><h4 class="text">${l.ans} Answers</h4></div>
-                        <div><h4 class="text">${l.view} Views</h4></div>
-                    </div>
-                    <div class="righ">
-                        <h3>${l.title}</h3>
+function Content() {
+    fetch("Data/art.json").then(res => res.json()).then(Data => {
+        let d = document.getElementById("con");
+        let s = "";
+
+        for (let i = 0; i < Data.length; i++) {
+            let l = Data[i];
+            let langItems = ""; // Khởi tạo lại langItems cho mỗi bài viết
+
+            for (let j = 1; l[`lang ${j}`]; j++) {
+                let lang = l[`lang ${j}`];
+                if (lang === "Javascript") {
+                    langItems += `<li><a href="http://127.0.0.1:5501/javascript.html">${lang}</a></li>`;
+                }
+            }
+
+            if (langItems) {
+            s += `
+            <div class="art flex">
+                <div class="lef">
+                    <div><h4 class="text">${l.vote} Votes</h4></div>
+                    <div><h4 class="text">${l.ans} Answers</h4></div>
+                    <div><h4 class="text">${l.view} Views</h4></div>
+                </div>
+                <div class="righ">
+                    <h3>${l.title}</h3>
+                    <div class="flex">
                         <div class="flex">
+                            <ul class="type">
+                                ${langItems}    
+                            </ul>
+                        </div>
+                        <div class="by">
                             <div class="flex">
-                                <ul class="type">
-                                    ${langItems}    
-                                </ul>
-                            </div>
-                            <div class="by">
-                                <div class="flex">
-                                    <h5 class="text">Posted by </h5>
-                                    <a href="#" class="flex hide">
-                                        <img src="Images/${l.img}" alt="">
-                                        <h5 class="text">${l.name}</h5>
-                                    </a>
-                                    <div class="info">
-                                        <div class="flex">
-                                            <div><img src="Images/${l.img}" alt=""></div>
-                                            <div>
-                                                <h5 class="text">${l.name}</h5>
-                                                <h5 class="text-min">${l.national}</h5>
-                                            </div>
+                                <h5 class="text">Posted by </h5>
+                                <a href="#" class="flex hide">
+                                    <img src="Images/${l.img}" alt="">
+                                    <h5 class="text">${l.name}</h5>
+                                </a>
+                                <div class="info">
+                                    <div class="flex">
+                                        <div><img src="Images/${l.img}" alt=""></div>
+                                        <div>
+                                            <h5 class="text">${l.name}</h5>
+                                            <h5 class="text-min">${l.national}</h5>
                                         </div>
-                                        <h5 class="text-min">${l.sumPro}</h5>
                                     </div>
+                                    <h5 class="text-min">${l.sumPro}</h5>
                                 </div>
-                                <h5 class="text">${l.time}</h5>
                             </div>
+                            <h5 class="text">${l.time}</h5>
                         </div>
                     </div>
                 </div>
-                `;
-            }
-            d.innerHTML += s;   
-        })
-        
+            </div>
+            `;
+        }
+    }
+
+    d.innerHTML += s;
+})
 }
 window.onload=()=>{ 
     Langs();

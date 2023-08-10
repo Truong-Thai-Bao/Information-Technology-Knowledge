@@ -1,0 +1,30 @@
+header{
+    justify-content: start;
+}
+header>h1{
+    font-size: 12px;
+    text-align: center;
+    width: 100px;
+}
+header>img{
+    width: 12%;
+}
+.search-input{
+    width: 100px;
+    padding: .2rem;
+    font-size: 12px;
+}
+.search-box{
+    margin: 0;
+}
+.head>div{
+    margin: 0;
+}
+.button{
+    padding: .5rem;
+    font-size: 10px;
+}
+ul.menu > li > a{
+    font-size: 10px;
+    padding: .2rem .4rem;
+}
