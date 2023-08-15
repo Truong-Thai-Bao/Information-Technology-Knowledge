@@ -17,4 +17,20 @@
 {
     "name":"JavaScript",
     "src":"http://127.0.0.1:5501/javascript.html"
+},
+{
+    "name":"PHP",
+    "src":"#"
+},
+{
+    "name":"Swift",
+    "src":"#"
+},
+{
+    "name":"Ruby",
+    "src":"#"
+},
+{
+    "name":"SQL",
+    "src":"#"
 }]

@@ -2,13 +2,20 @@
      --color:white;
 }
 
+h2 {
+     font-size: 24px;
+     margin-bottom: 20px;
+     color: var(--color);
+     text-align: center;
+}       
+
 .flex{
      display: flex;
 }
 body {
      background: linear-gradient(black, silver);
      font-family:cursive;
-     overflow: hidden;
+     /* overflow: hidden; */
 }
 .text  {
      margin:2px 0;
@@ -95,6 +102,7 @@ body {
      .button:hover{
           background: silver;
           color: black;
+          cursor: pointer;
      }
 /* NAV */
      ul.menu{
@@ -125,7 +133,7 @@ body {
      nav{
           background-color: #666;
           top:0;
-          border-radius: px;
+          border-radius: 10px;
           width: 100%;
           position: sticky;
           z-index: 100;
@@ -357,33 +365,38 @@ body {
      }  
 
 /* RIGHT */
-     .right{
-          position: absolute;
-          top: .25rem;
-          right: 0;
-          height: 1000px;
-     }    
-     .abs{
-          position: relative;
-     }
-     
-     .ads > div{
-          border: 3px dashed blanchedalmond;
-          padding:4rem;
-          color: var(--color);
-     }  
-
-     .right h3{
-          margin: .5rem;
-     }
-
-     h2 {
-          font-size: 24px;
-          margin-bottom: 20px;
-          color: var(--color);
-          text-align: center;
-     }
-
+     .right {
+     float: right;
+     margin-top: 1rem;
+     /* width: 100%; */
+     width: 200px;
+     height: 500px;
+     position: absolute;
+     right: 0;
+   }
+   
+   .ads {
+     display: flex;
+     flex-direction: column; /* Xếp các hình ảnh dọc */
+     position: absolute;
+     right: 0px;
+   }
+   
+   .ads > div {
+     padding: 0;
+     color: var(--color);
+     /* width: 100%;  */
+     /* display: flex; */
+     justify-content: center;
+     align-items: center;
+     height: 80%; /* Chiếm 50% chiều cao của .ads để tạo 2 hình bên cạnh */
+   }
+   
+   .ads > div img {
+     max-width: 100%; /* Thu nhỏ hình ảnh lại để vừa với khung */
+     max-height: 100%; 
+   }
+        
 /* FOOTER */
      footer {
           color: var(--color);
@@ -443,6 +456,7 @@ body {
      justify-content: center;
      align-items: center;
      overflow: hidden;
+     /* position: fixed; */
      transform:  scale(0);
      transition: transform .5s ease, height .2 ease;
    }
@@ -549,7 +563,11 @@ body {
      color: #162938;
      line-height: 57px;
    }
-   
+
+   .show{
+     cursor: pointer;
+   }
+
    .remember-forgot{
      font-size: 1rem;
      color: #162938;
@@ -602,6 +620,7 @@ body {
    
    .login-register p a:hover{
      text-decoration: underline;
+     cursor: pointer;
    }
 
    /*GO TO TOP*/
@@ -616,4 +635,43 @@ body {
      position: fixed;
      bottom: 40px;
      right: 20px;
+     border-radius: 50%;
 }
+
+#backtop:hover{
+     cursor: pointer;
+}
+
+/*VIDEO*/
+
+.video-container {
+     /* background: #666; */
+     /* border-radius: 10px; */
+     /* padding: 20px; */
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+ }
+ 
+ .video-container iframe {
+     width: calc(25% - 10px);
+     height: 300%;
+     margin: 0 10px;
+     box-sizing: border-box;
+ }
+ 
+ .go{
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .go >button{
+     font-size: 20px;
+     border-radius: 10px;
+     background: none;
+     transition: 1s;
+ }
+
+ .go >button:hover{
+     cursor: pointer;
+ }

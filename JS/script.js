@@ -9,16 +9,34 @@ function Langs(){
     })
 }
 
-function Ads(){
-    fetch("Data/ads.json").then(res=>res.json()).then(Data=>{
-        let d=document.getElementById("Ads");
-        let s="";
-        for(let l of Data)
-            s+=`<div>${l.name}</div></li>`;
-        d.innerHTML+=s;
-    })
-}
+    function Ads(){
+        fetch("Data/ads.json").then(res=>res.json()).then(Data=>{
+            let d=document.getElementById("Ads");
+            let s="";
+            for(let l of Data)
+                s+=`<div>${l.name}</div></li>`;
+            d.innerHTML+=s;
+        })
+    }
 
+// function Ads() {
+//     fetch("Data/ads.json")
+//         .then(res => res.json())
+//         .then(Data => {
+//             let d = document.getElementById("Ads");
+//             let s = "";
+//             for (let item of Data) {
+//                 s += `<div><img src="${item.img}" alt="${item.name}" /></div>`;
+//             }
+//             d.innerHTML += s;
+//         })
+//         .catch(error => {
+//             console.error("Error fetching or processing data:", error);
+//         });
+// }
+
+
+    
 function Content() {
     fetch("Data/art.json").then(res => res.json()).then(Data => {
         fetch("Data/Languages.json").then(res => res.json()).then(LangsData => {
@@ -151,35 +169,50 @@ document.addEventListener("DOMContentLoaded", function() {
     const registerLink = document.querySelector('.register-link');
     const btnPopup = document.querySelector('.btnLogin-popup');
     const iconClose = document.querySelector('.icon-close');
-
-    registerLink.addEventListener('click', ()=> {
-         wrapper.classList.add('active')
+    // const newposts = document.querySelector('.new-posts');
+    const passwordInput = document.querySelector('input[type="password"]');
+    const eyeIcon = document.querySelector('.fa-eye');
+    
+        eyeIcon.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
     });
 
-    loginLink.addEventListener('click', ()=> {
-         wrapper.classList.remove('active')
+    // newposts.addEventListener('click', () => {
+    //     newposts.classList.add('active');
+    // })
+
+    registerLink.addEventListener('click', () => {
+        wrapper.classList.add('active');
     });
 
-    btnPopup.addEventListener('click', ()=> {
-         wrapper.classList.add('active-popup')
+    loginLink.addEventListener('click', () => {
+        wrapper.classList.remove('active');
     });
 
-    iconClose.addEventListener('click', ()=> {
-         wrapper.classList.remove('active-popup')
-    })
+    btnPopup.addEventListener('click', () => {
+        wrapper.classList.add('active-popup');
+    });
 
+    iconClose.addEventListener('click', () => {
+        wrapper.classList.remove('active-popup');
+    });
 
-}); 
-
-
-//Nếu cuộn top =0 thì sẽ scroll theo
-const sidebar = document.querySelector(".left");
-const cos =document.querySelector('.cos');
-window.addEventListener("scroll", function() {
-    const scrollY = window.scrollY;
-    sidebar.style.height = `calc(100vh - ${scrollY}px)`;
-    cos.style.height=`calc(100vh-${scrollY}px)`;
 });
+
+
+
+// Nếu cuộn top =0 thì sẽ scroll theo
+// const sidebar = document.querySelector(".left");
+// const cos =document.querySelector('.cos');
+// window.addEventListener("scroll", function() {
+//     const scrollY = window.scrollY;
+//     sidebar.style.height = `calc(100vh - ${scrollY}px)`;
+//     cos.style.height=`calc(100vh - ${scrollY}px)`;
+// });
 
 
 $(document).ready(() => {
@@ -195,7 +228,7 @@ $(document).ready(() => {
         } else{
             $("#backtop").hide("slow"); 
         }
-    })
+    });
 //Hover
     $(".by a").hover(function(){
         if($(this).next().position().top+$(this).next().outerHeight()>$(window).height()){
@@ -207,7 +240,58 @@ $(document).ready(() => {
             $(this).next().removeClass("infoUp");
         }
     });
-});
+
+    $(".vid").click(function(event){
+        event.preventDefault();
+        $("html, body").animate({
+          scrollTop: $("#video").offset().top
+        }, 800);
+      });
+
+}); 
+
+    // let box = document.querySelector(".video");
+    // window.onmousemove=function(e){
+    //     let x = e.clientX/3;
+    //     video.style.transform = "perspective(1000px) rotateY(" + x +"deg)";
+    // }
 
 
+//VIDEO
+    document.addEventListener("DOMContentLoaded", function () {
+        const videoContainer = document.querySelector('.video-container');
+        const prevButton = videoContainer.querySelector('.prev-button');
+        const nextButton = videoContainer.querySelector('.next-button');
+        const videos = videoContainer.querySelectorAll('iframe');
     
+        let currentIndex = 0; //vị trí hiện tại của video
+    
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+            updateVisibleVideos();
+        }); //sk khi nhấp <
+    
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % videos.length;
+            updateVisibleVideos();
+        }); //sk khi nhấp >
+    
+        function updateVisibleVideos() {
+            videos.forEach((video, index) => {
+                if (
+                    index === currentIndex ||
+                    index === (currentIndex - 1 + videos.length) % videos.length || // Previous video
+                    index === (currentIndex + 1) % videos.length // Next video
+                ) {
+                    video.style.display = 'block';
+                } else {
+                    video.style.display = 'none';
+                }
+            });
+        } //update vị trí hiện tại
+    
+        // Show the first video initially
+        updateVisibleVideos();
+    });
+    
+     
