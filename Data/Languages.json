@@ -1,28 +1,28 @@
 [{
     "name":"C++",
-    "src":"http://127.0.0.1:5501/c++.html"
+    "src":"https://truong-thai-bao.github.io/Information-Technology-Knowledge/c++.html"
 },
 {
     "name":"Python",
-    "src":"http://127.0.0.1:5501/python.html"
+    "src":"https://truong-thai-bao.github.io/Information-Technology-Knowledge/python.html"
 },
 {
     "name":"C#",
-    "src":"http://127.0.0.1:5501/csharp.html"
+    "src":"https://truong-thai-bao.github.io/Information-Technology-Knowledge/csharp.html"
 },
 {
     "name":"Java",
-    "src":"http://127.0.0.1:5501/java.html"
+    "src":"https://truong-thai-bao.github.io/Information-Technology-Knowledge/java.html"
 },
 {
     "name":"JavaScript",
-    "src":"http://127.0.0.1:5501/javascript.html"
+    "src":"https://truong-thai-bao.github.io/Information-Technology-Knowledge/javascript.html"
 },
 {
     "name":"PHP",
-    "src":"http://127.0.0.1:5501/php.html"
+    "src":"https://truong-thai-bao.github.io/Information-Technology-Knowledge/php.html"
 },
 {
     "name":"Ruby",
-    "src":"http://127.0.0.1:5501/ruby.html"
+    "src":"https://truong-thai-bao.github.io/Information-Technology-Knowledge/ruby.html"
 }]
