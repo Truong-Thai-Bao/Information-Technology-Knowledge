@@ -28,7 +28,7 @@ function Content() {
 
             for (let j = 1; l[`lang ${j}`]; j++) {
                 let lang = l[`lang ${j}`];  
-                if (lang === "Javascript") {
+                if (lang === "JavaScript") {
                     langItems += `<li><a href="http://127.0.0.1:5501/javascript.html">${lang}</a></li>`;
                 }
             }
