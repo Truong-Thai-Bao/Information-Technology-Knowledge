@@ -1,4 +1,3 @@
-
 function Langs(){
     fetch("Data/Languages.json").then(res=>res.json()).then(Data=>{
         let d=document.getElementById("languages");
@@ -8,34 +7,15 @@ function Langs(){
         d.innerHTML+=s;
     })
 }
-
-    function Ads(){
-        fetch("Data/ads.json").then(res=>res.json()).then(Data=>{
-            let d=document.getElementById("Ads");
-            let s="";
-            for(let l of Data)
-                s+=`<div>${l.name}</div></li>`;
-            d.innerHTML+=s;
-        })
-    }
-
-// function Ads() {
-//     fetch("Data/ads.json")
-//         .then(res => res.json())
-//         .then(Data => {
-//             let d = document.getElementById("Ads");
-//             let s = "";
-//             for (let item of Data) {
-//                 s += `<div><img src="${item.img}" alt="${item.name}" /></div>`;
-//             }
-//             d.innerHTML += s;
-//         })
-//         .catch(error => {
-//             console.error("Error fetching or processing data:", error);
-//         });
-// }
-
-
+function Ads(){
+    fetch("Data/ads.json").then(res=>res.json()).then(Data=>{
+        let d=document.getElementById("ads");
+        let s="";
+        for(let i of Data)
+            s+=`<div><img src="Images/${i.img}.jpg" alt="ads"></div>`;
+        d.innerHTML+=s;
+    })
+}
     
 function Content() {
     fetch("Data/art.json").then(res => res.json()).then(Data => {
@@ -54,8 +34,7 @@ function Content() {
                 }
 
                 if (langItems) {
-            s += `
-            
+            s += ` 
             <div class="art flex">
                 <div class="lef">
                     <div><h4 class="text">${l.vote} Votes</h4></div>
@@ -96,7 +75,6 @@ function Content() {
             `;
         }
     }
-
     d.innerHTML += s;
 });
 });
@@ -106,14 +84,9 @@ function getLangSrc(langName, LangsData) {
     const langInfo = LangsData.find(lang => lang.name === langName);
     return langInfo ? langInfo.src : "#"; // Trả về "#", hoặc giá trị mặc định khác nếu không tìm thấy
 }
-window.onload=()=>{ 
-    Langs();
-    Ads();
-    Content();
 
-
-
-    //thanh tìm kiếm
+//Gợi ý tìm kiếm
+function Suggestion(){
     var suggestionList = $(".suggestion-list");
     var searchInput = $(".search-input");
     
@@ -156,20 +129,23 @@ window.onload=()=>{
     
         suggestionList.slideUp();
     });
-    
 }
 
+window.onload=()=>{ 
+    Langs();
+    Ads();
+    Content();
+    Suggestion();
+}
 
-
+document.addEventListener("DOMContentLoaded", function() {
 
 //Login
-document.addEventListener("DOMContentLoaded", function() {
     const wrapper = document.querySelector('.wrapper');
     const loginLink = document.querySelector('.login-link');
     const registerLink = document.querySelector('.register-link');
     const btnPopup = document.querySelector('.btnLogin-popup');
     const iconClose = document.querySelector('.icon-close');
-    // const newposts = document.querySelector('.new-posts');
     const passwordInput = document.querySelector('input[type="password"]');
     const eyeIcon = document.querySelector('.fa-eye');
     
@@ -180,10 +156,6 @@ document.addEventListener("DOMContentLoaded", function() {
             passwordInput.type = 'password';
         }
     });
-
-    // newposts.addEventListener('click', () => {
-    //     newposts.classList.add('active');
-    // })
 
     registerLink.addEventListener('click', () => {
         wrapper.classList.add('active');
@@ -201,21 +173,48 @@ document.addEventListener("DOMContentLoaded", function() {
         wrapper.classList.remove('active-popup');
     });
 
+
+
+//VIDEO
+    const videoContainer = document.querySelector('.video-container');
+    const prevButton = videoContainer.querySelector('.prev-button');
+    const nextButton = videoContainer.querySelector('.next-button');
+    const videos = videoContainer.querySelectorAll('iframe');
+
+    let currentIndex = 0; //vị trí hiện tại của video
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        updateVisibleVideos();
+    }); //sk khi nhấp <
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        updateVisibleVideos();
+    }); //sk khi nhấp >
+
+    function updateVisibleVideos() {
+        videos.forEach((video, index) => {
+            if (
+                index === currentIndex ||
+                index === (currentIndex - 1 + videos.length) % videos.length || // Previous video
+                index === (currentIndex + 1) % videos.length // Next video
+            ) {
+                video.style.display = 'block';
+            } else {
+                video.style.display = 'none';
+            }
+        });
+    } //update vị trí hiện tại      
+
+    // Show the first video initially
+    updateVisibleVideos();
+
+    
 });
 
-
-
-// Nếu cuộn top =0 thì sẽ scroll theo
-// const sidebar = document.querySelector(".left");
-// const cos =document.querySelector('.cos');
-// window.addEventListener("scroll", function() {
-//     const scrollY = window.scrollY;
-//     sidebar.style.height = `calc(100vh - ${scrollY}px)`;
-//     cos.style.height=`calc(100vh - ${scrollY}px)`;
-// });
-
-
 $(document).ready(() => {
+//Back top
     $("#backtop").hide();
     $("#backtop").click(() => {
         $("html, body").animate({
@@ -229,69 +228,36 @@ $(document).ready(() => {
             $("#backtop").hide("slow"); 
         }
     });
-//Hover
-    $(".by a").hover(function(){
-        if($(this).next().position().top+$(this).next().outerHeight()>$(window).height()){
-            $(this).next().removeClass("info");
-            $(this).next().addClass("infoUp");
+
+
+
+//Video
+    $(".vid").click(function(event){
+    event.preventDefault();
+    $("html, body").animate({
+      scrollTop: $("#video").offset().top   
+    }, 800);
+    });
+
+//MENU
+    let menuClicked = false;   // Biến để theo dõi việc click vào #menu
+    $("#menu").on("click",function(){
+        if(menuClicked===false){
+            $("#sidebar").toggleClass("open");
+            $(this).toggleClass("open");
+            menuClicked=true;
         }
         else{
-            $(this).next().addClass("info");
-            $(this).next().removeClass("infoUp");
+            $("#sidebar").toggleClass("close");
+            $(this).toggleClass("close");
+            menuClicked=false;
         }
     });
-
-    $(".vid").click(function(event){
-        event.preventDefault();
-        $("html, body").animate({
-          scrollTop: $("#video").offset().top
-        }, 800);
-      });
-
+  
 }); 
-
-    // let box = document.querySelector(".video");
-    // window.onmousemove=function(e){
-    //     let x = e.clientX/3;
-    //     video.style.transform = "perspective(1000px) rotateY(" + x +"deg)";
-    // }
-
-
-//VIDEO
-    document.addEventListener("DOMContentLoaded", function () {
-        const videoContainer = document.querySelector('.video-container');
-        const prevButton = videoContainer.querySelector('.prev-button');
-        const nextButton = videoContainer.querySelector('.next-button');
-        const videos = videoContainer.querySelectorAll('iframe');
-    
-        let currentIndex = 0; //vị trí hiện tại của video
-    
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-            updateVisibleVideos();
-        }); //sk khi nhấp <
-    
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % videos.length;
-            updateVisibleVideos();
-        }); //sk khi nhấp >
-    
-        function updateVisibleVideos() {
-            videos.forEach((video, index) => {
-                if (
-                    index === currentIndex ||
-                    index === (currentIndex - 1 + videos.length) % videos.length || // Previous video
-                    index === (currentIndex + 1) % videos.length // Next video
-                ) {
-                    video.style.display = 'block';
-                } else {
-                    video.style.display = 'none';
-                }
-            });
-        } //update vị trí hiện tại
-    
-        // Show the first video initially
-        updateVisibleVideos();
-    });
-    
-     
+function add(){
+    $("#logIn").toggleClass("err");
+}
+function remove(){
+    $("#logIn").removeClass("err");
+}   

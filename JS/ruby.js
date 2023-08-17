@@ -28,8 +28,8 @@ function Content() {
 
             for (let j = 1; l[`lang ${j}`]; j++) {
                 let lang = l[`lang ${j}`];  
-                if (lang === "Javascript") {
-                    langItems += `<li><a href="http://127.0.0.1:5501/javascript.html">${lang}</a></li>`;
+                if (lang === "Ruby") {
+                    langItems += `<li><a href="http://127.0.0.1:5501/ruby.html">${lang}</a></li>`;
                 }
             }
 
@@ -139,8 +139,8 @@ window.onload=()=>{
     Suggestion();
 }
 
-document.addEventListener("DOMContentLoaded", function() {
 
+document.addEventListener("DOMContentLoaded", function() {
 //Login
     const wrapper = document.querySelector('.wrapper');
     const loginLink = document.querySelector('.login-link');
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const iconClose = document.querySelector('.icon-close');
     const passwordInput = document.querySelector('input[type="password"]');
     const eyeIcon = document.querySelector('.fa-eye');
-    
+
         eyeIcon.addEventListener('click', () => {
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-//VIDEO
+    //VIDEO
     const videoContainer = document.querySelector('.video-container');
     const prevButton = videoContainer.querySelector('.prev-button');
     const nextButton = videoContainer.querySelector('.next-button');
@@ -213,7 +213,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 $(document).ready(() => {
 //Back top
     $("#backtop").hide();
@@ -230,12 +229,11 @@ $(document).ready(() => {
         }
     });
 
-
 //Video
-    $(".vid").click(function(event){
+$(".vid").click(function(event){
     event.preventDefault();
     $("html, body").animate({
-      scrollTop: $("#video").offset().top   
+        scrollTop: $("#video").offset().top   
     }, 800);
     });
 //MENU

@@ -20,17 +20,9 @@
 },
 {
     "name":"PHP",
-    "src":"#"
-},
-{
-    "name":"Swift",
-    "src":"#"
+    "src":"http://127.0.0.1:5501/php.html"
 },
 {
     "name":"Ruby",
-    "src":"#"
-},
-{
-    "name":"SQL",
-    "src":"#"
+    "src":"http://127.0.0.1:5501/ruby.html"
 }]

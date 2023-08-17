@@ -28,8 +28,8 @@ function Content() {
 
             for (let j = 1; l[`lang ${j}`]; j++) {
                 let lang = l[`lang ${j}`];  
-                if (lang === "Javascript") {
-                    langItems += `<li><a href="http://127.0.0.1:5501/javascript.html">${lang}</a></li>`;
+                if (lang === "Php") {
+                    langItems += `<li><a href="http://127.0.0.1:5501/php.html">${lang}</a></li>`;
                 }
             }
 
@@ -232,12 +232,12 @@ $(document).ready(() => {
 
 
 //Video
-    $(".vid").click(function(event){
+$(".vid").click(function(event){
     event.preventDefault();
     $("html, body").animate({
       scrollTop: $("#video").offset().top   
     }, 800);
-    });
+  });
 //MENU
     let menuClicked = false;   // Biến để theo dõi việc click vào #menu
     $("#menu").on("click",function(){
@@ -252,7 +252,7 @@ $(document).ready(() => {
             menuClicked=false;
         }
     })
-}); 
+});
 function add(){
     $("#logIn").toggleClass("err");
 }

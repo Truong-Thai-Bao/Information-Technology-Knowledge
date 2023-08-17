@@ -1,4 +1,3 @@
-
 function Langs(){
     fetch("Data/Languages.json").then(res=>res.json()).then(Data=>{
         let d=document.getElementById("languages");
@@ -8,17 +7,16 @@ function Langs(){
         d.innerHTML+=s;
     })
 }
-
 function Ads(){
     fetch("Data/ads.json").then(res=>res.json()).then(Data=>{
-        let d=document.getElementById("Ads");
+        let d=document.getElementById("ads");
         let s="";
-        for(let l of Data)
-            s+=`<div>${l.name}</div></li>`;
+        for(let i of Data)
+            s+=`<div><img src="Images/${i.img}.jpg" alt="ads"></div>`;
         d.innerHTML+=s;
     })
 }
-
+    
 function Content() {
     fetch("Data/art.json").then(res => res.json()).then(Data => {
         let d = document.getElementById("con");
@@ -29,7 +27,7 @@ function Content() {
             let langItems = ""; // Khởi tạo lại langItems cho mỗi bài viết
 
             for (let j = 1; l[`lang ${j}`]; j++) {
-                let lang = l[`lang ${j}`];
+                let lang = l[`lang ${j}`];  
                 if (lang === "Java") {
                     langItems += `<li><a href="http://127.0.0.1:5501/java.html">${lang}</a></li>`;
                 }
@@ -81,85 +79,141 @@ function Content() {
     d.innerHTML += s;
 })
 }
-window.onload=()=>{ 
-    Langs();
-    Ads();
-    Content();
 
+function getLangSrc(langName, LangsData) {
+    const langInfo = LangsData.find(lang => lang.name === langName);
+    return langInfo ? langInfo.src : "#"; // Trả về "#", hoặc giá trị mặc định khác nếu không tìm thấy
+}
+
+//Gợi ý tìm kiếm
+function Suggestion(){
     var suggestionList = $(".suggestion-list");
     var searchInput = $(".search-input");
+    
     searchInput.on("input", function () {
         var searchText = $(this).val().toLowerCase(); 
         suggestionList.empty();
-
-        $("h3"||"#type").each(function () {
+    
+        $("h3" || "#type").each(function () {
             var title = $(this).text().toLowerCase();
             if (title.includes(searchText)) {
                 var suggestionItem = $("<li>").text(title);
                 suggestionList.append(suggestionItem);
             }
         });
-
+    
         if (searchText.length > 0 && suggestionList.is(":hidden")) {
             suggestionList.slideDown();
         } else if (searchText.length === 0 && suggestionList.is(":visible")) {
             suggestionList.slideUp();
         }
-    
-        
     });
-
-
-
+    
     suggestionList.on("click", "li", function () {
-        if($(window).width() <= 700) {
+        if ($(window).width() <= 700) {
             $('.slide').slideToggle();
         }
         var searchValue = $(this).text();
         searchInput.val(searchValue);
-
+    
         var targetHeader = $("h3").filter(function () {
             return $(this).text().toLowerCase() === searchValue.toLowerCase();
         });
-
+    
         if (targetHeader.length > 0) {
             var offsetTop = targetHeader.offset().top - $('h3').height() - $('h3').height();
             $("html, body").animate({
                 scrollTop:offsetTop
             }, 500);
         }
-
+    
         suggestionList.slideUp();
     });
-
 }
 
+window.onload=()=>{ 
+    Langs();
+    Ads();
+    Content();
+    Suggestion();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
+
+//Login
     const wrapper = document.querySelector('.wrapper');
     const loginLink = document.querySelector('.login-link');
     const registerLink = document.querySelector('.register-link');
     const btnPopup = document.querySelector('.btnLogin-popup');
     const iconClose = document.querySelector('.icon-close');
-
-    registerLink.addEventListener('click', ()=> {
-         wrapper.classList.add('active')
+    const passwordInput = document.querySelector('input[type="password"]');
+    const eyeIcon = document.querySelector('.fa-eye');
+    
+        eyeIcon.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
     });
 
-    loginLink.addEventListener('click', ()=> {
-         wrapper.classList.remove('active')
+    registerLink.addEventListener('click', () => {
+        wrapper.classList.add('active');
     });
 
-    btnPopup.addEventListener('click', ()=> {
-         wrapper.classList.add('active-popup')
+    loginLink.addEventListener('click', () => {
+        wrapper.classList.remove('active');
     });
 
-    iconClose.addEventListener('click', ()=> {
-         wrapper.classList.remove('active-popup')
-    })
-}); 
+    btnPopup.addEventListener('click', () => {
+        wrapper.classList.add('active-popup');
+    });
+
+    iconClose.addEventListener('click', () => {
+        wrapper.classList.remove('active-popup');
+    });
+
+
+
+//VIDEO
+    const videoContainer = document.querySelector('.video-container');
+    const prevButton = videoContainer.querySelector('.prev-button');
+    const nextButton = videoContainer.querySelector('.next-button');
+    const videos = videoContainer.querySelectorAll('iframe');
+
+    let currentIndex = 0; //vị trí hiện tại của video
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        updateVisibleVideos();
+    }); //sk khi nhấp <
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        updateVisibleVideos();
+    }); //sk khi nhấp >
+
+    function updateVisibleVideos() {
+        videos.forEach((video, index) => {
+            if (
+                index === currentIndex ||
+                index === (currentIndex - 1 + videos.length) % videos.length || // Previous video
+                index === (currentIndex + 1) % videos.length // Next video
+            ) {
+                video.style.display = 'block';
+            } else {
+                video.style.display = 'none';
+            }
+        });
+    } //update vị trí hiện tại      
+
+    // Show the first video initially
+    updateVisibleVideos();
+});
+
 
 $(document).ready(() => {
+//Back top
     $("#backtop").hide();
     $("#backtop").click(() => {
         $("html, body").animate({
@@ -168,9 +222,39 @@ $(document).ready(() => {
     });
     $(window).scroll(function() {
         if ($(this).scrollTop() >= 100){
-            $("#backtop").show("slow")
+            $("#backtop").show("slow");
         } else{
-            $("#backtop").hide("slow")
+            $("#backtop").hide("slow"); 
+        }
+    });
+
+
+
+//Video
+    $(".vid").click(function(event){
+    event.preventDefault();
+    $("html, body").animate({
+      scrollTop: $("#video").offset().top   
+    }, 800);
+    });
+//MENU
+    let menuClicked = false;   // Biến để theo dõi việc click vào #menu
+    $("#menu").on("click",function(){
+        if(menuClicked===false){
+            $("#sidebar").toggleClass("open");
+            $(this).toggleClass("open");
+            menuClicked=true;
+        }
+        else{
+            $("#sidebar").toggleClass("close");
+            $(this).toggleClass("close");
+            menuClicked=false;
         }
     })
-});
+}); 
+function add(){
+    $("#logIn").toggleClass("err");
+}
+function remove(){
+    $("#logIn").removeClass("err");
+}   

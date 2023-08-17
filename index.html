@@ -22,12 +22,8 @@
                 <ul class="suggestion-list"></ul>
             </div>
             <div>
-                <button class="btnLogin-popup button"><i class="fa-solid fa-user"></i> Login/Register</button>    
+                <button class="btnLogin-popup button" id="logIn" onclick="remove()"><i class="fa-solid fa-user"></i><div class="hid">Login/Register</div></button>    
             </div>
-            <!-- <div>
-                <i class="fa-solid fa-sun sun"></i>
-                <i class="fa-solid fa-moon moon"></i>
-            </div> -->
         </div>
     </header>
      <nav>
@@ -40,14 +36,14 @@
             <h2>Login</h2>
             <form action="#">
                 <div class="input-box">
-                <span class="icon"><i class="fa-solid fa-envelope"></i></span>
-                <input type="email" required>
-                <label>Email</label>          
+                    <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                    <input type="email" required>
+                    <label>Email</label>          
                 </div>
                 <div class="input-box">
-                <span class="icon show"><i class="fa-solid fa-eye"></i></span>
-                <input type="password" required>
-                <label>Password</label>          
+                    <span class="icon show"><i class="fa-solid fa-eye"></i></span>
+                    <input type="password" required>
+                    <label>Password</label>          
                 </div>
                 <div class="remember-forgot">
                 <label>
@@ -94,11 +90,20 @@
             </form>
         </div>
     </div>
+    <div class="MENU" id="menu"><a href="#"><i class="fa-solid fa-bars"></i></a></div>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="http://127.0.0.1:5501/index.html">Home</a></li>
+            <li><a href="#" id="new-post" onclick="add()">New Posts</a></li>
+            <li><a href="#video" class="vid">Videos</a></li>
+            <li><a href="mailto:2251050008bao@ou.edu.vn">Contact</a></li>
+        </ul>
+    </div>
     <main class="flex">
         <section class="left">
             <ul class="si">
                 <li>
-                    <div class="flex sidebar">
+                    <div class="flex">
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
                             src="https://cdn.lordicon.com/gmzxduhd.json"
@@ -111,21 +116,20 @@
                     </div>
                 </li>
                 <li>
-                    <div class="flex sidebar">
+                    <div class="flex">
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
+                            class="lord"    
                             src="https://cdn.lordicon.com/mecwbjnp.json"
                             trigger="morph"
                             colors="primary:#121331,secondary:#000000"
                             style="width:50px;height:50px">
                         </lord-icon>
-                        <!-- <a href="#">New Posts</a> -->
-                        <a class="new-posts" href="#">New Posts</a>
-
+                        <a href="#" id="new-post" onclick="add()">New Posts</a>
                     </div>
                 </li>
                 <li>
-                    <div class="flex sidebar">
+                    <div class="flex">
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
                             src="https://cdn.lordicon.com/rzrkjbrm.json"
@@ -137,7 +141,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="flex sidebar">
+                    <div class="flex">
                         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
                         <lord-icon
                             src="https://cdn.lordicon.com/zpxybbhl.json"
@@ -156,13 +160,9 @@
         </section>
         <section class="right">
             <div class="ads" id="ads">
-                <div><img src="ads/1.jpg" alt="ads"></div>
-                <div><img src="ads/2.jpg" alt="ads"></div>
-                <div><img src="ads/3.jpg" alt="ads"></div>
-                <div><img src="ads/1.jpg" alt="ads"></div>
-                <div><img src="ads/4.jpg" alt="ads"></div>
            </div>       
         </section>
+
     </main>
 
     <div class="videos">
@@ -188,10 +188,7 @@
                 <button class="next-button"><i class="fa-solid fa-angle-right"></i></button>
             </div>
         </div>
-        
-
     </div>
-
     <footer>
         <div>
             <a href="#"><img src="Images/facebook.png" alt="facebook"></a>
@@ -200,7 +197,7 @@
             <a href="#"><img src="Images/youtube.png" alt="youtube"></a>
         </div>
         <div>
-            <h4><p>&copy; Information Technology Knowledge</p</h4>
+            <h4><p>&copy; Information Technology Knowledge</p></h4>
         </div>
         <div id="backtop">
             <i class="fa-solid fa-arrow-up"></i>
