@@ -3,7 +3,7 @@ function Langs(){
         let d=document.getElementById("languages");
         let s="";
         for(let l of Data)
-            s+=`<li><a href="${l.src}">${l.name}</a></li>`;
+            s+=`<li><a href="${l.src}">${l.name}</a></li>`;//có src để khi bấm vào sẽ link đến trang web của nn đó
         d.innerHTML+=s;
     })
 }
@@ -28,7 +28,7 @@ function Content() {
                 let langItems = ""; // Khởi tạo lại langItems cho mỗi bài viết
 
                 for (let key in l) {
-                    if (key.startsWith("lang") && l[key]) {
+                    if (key.startsWith("lang") && l[key]) {//kiểm tra thuộc tính bắt đầu bằng "lang" và l[key] trả về giá trị của thuộc tính đó
                         langItems += `<li><a href="${getLangSrc(l[key], LangsData)}">${l[key]}</a></li>`;
                     }
                 }
@@ -94,7 +94,7 @@ function Suggestion(){
         var searchText = $(this).val().toLowerCase(); 
         suggestionList.empty();
     
-        $("h3" || "#type").each(function () {
+        $("h3" || ".type").each(function () {
             var title = $(this).text().toLowerCase();
             if (title.includes(searchText)) {
                 var suggestionItem = $("<li>").text(title);
@@ -148,8 +148,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const iconClose = document.querySelector('.icon-close');
     const passwordInput = document.querySelector('input[type="password"]');
     const eyeIcon = document.querySelector('.fa-eye');
-    
-        eyeIcon.addEventListener('click', () => {
+    //required yêu cầu client nhập tên
+    eyeIcon.addEventListener('click', () => {//nút ẩn, hiện pass
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
         } else {
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentIndex = 0; //vị trí hiện tại của video
 
     prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;//có thể lấy được vị trí trước 0
         updateVisibleVideos();
     }); //sk khi nhấp <
 
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 index === currentIndex ||
                 index === (currentIndex - 1 + videos.length) % videos.length || // Previous video
                 index === (currentIndex + 1) % videos.length // Next video
-            ) {
+            ) { 
                 video.style.display = 'block';
             } else {
                 video.style.display = 'none';
@@ -222,7 +222,7 @@ $(document).ready(() => {
         }, 1000);
     });
     $(window).scroll(function() {
-        if ($(this).scrollTop() >= 100){
+        if ($(this).scrollTop() >= 100){//cuộn top >   100
             $("#backtop").show("slow");
         } else{
             $("#backtop").hide("slow"); 
@@ -237,7 +237,7 @@ $(document).ready(() => {
     $("html, body").animate({
       scrollTop: $("#video").offset().top   
     }, 800);
-    });
+    });//cuộn trang đến top id video
 
 //MENU
     let menuClicked = false;   // Biến để theo dõi việc click vào #menu

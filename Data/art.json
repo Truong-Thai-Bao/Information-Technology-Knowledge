@@ -24,7 +24,7 @@
 },{
     "vote":1,
     "ans":3,
-    "view":30,
+    "view":3,
     "title":"Creating an Animated SVG Path Rotation Using HTML/CSS/JavaScript",
     "lang 1":"JavaScript",
     "lang 2":"Css",
@@ -36,7 +36,7 @@
 },{
     "vote":0,
     "ans":1,
-    "view":20,
+    "view":0,
     "title":"Javascript Counterup 2 - apply code on all elements",
     "lang 1":"JavaScript",
     "time":"1 hour ago",
@@ -58,9 +58,9 @@
     "sumPro":"I'm a developer at heart.I love C++ even though it's bad for you :).I love many more languages, but I specialize in C++.At stackoverflow .I've taken to monitoring the boost tag, mostly. In the past I've used ..."
 }
 ,{
-    "vote":15,
+    "vote":5,
     "ans":1,
-    "view":"1k",
+    "view":"15",
     "title":"Compiler Failed using REMIX IDE",
     "lang 1":"JavaScript",
     "lang 2":"Python",
@@ -82,7 +82,7 @@
     "national":"Hull, UK",   
     "sumPro":"I am a lecturer of Computer Science at the University of Hull.#SOreadytohelp"
 },{
-    "vote":70,
+    "vote":7,
     "ans":1,    
     "view":"1k",
     "title":"Email Alert when Audio stream stops",
@@ -95,9 +95,9 @@
     "national":"India",   
     "sumPro":"I am 2022 Information Technology graduate with 9.13 Cumulative GPA on the scale of 10."
 },{
-    "vote":53,
+    "vote":2,
     "ans":1,    
-    "view":"3k",
+    "view":"6",
     "title":"Dimensions change when you use zoom css",
     "lang 1":"JavaScript",
     "lang 2":"Html",
@@ -108,9 +108,9 @@
     "national":"Tehran, Iran",   
     "sumPro":"Don’t stop when you’re tired. Stop when you’re done. Take care..."
 },{
-    "vote":50,
+    "vote":2,
     "ans":1,        
-    "view":"2k",
+    "view":"6",
     "title":"'LoginPage' is not defined",
     "lang 1":"JavaScript",
     "lang 2":"Reactjs",
@@ -121,9 +121,9 @@
     "sumPro":"Any fool can write code that a computer can understand. Good programmers write code that humans can understand.   "
 }
 ,{
-    "vote":51,
+    "vote":3,
     "ans":5,    
-    "view":"3k",
+    "view":"9",
     "title":"Flask app publicly available, but not available to PHP cURL",
     "lang 1":"PHP",
     "lang 2":"Python",
@@ -134,9 +134,9 @@
     "sumPro":"I'm a very good web developer and good with other cms like Drupal, Joomla, social engine, magento, phpfox and other. My main interest is in web designing and programming. If you like this, then lets get coding!"
 }
 ,{
-    "vote":100,
-    "ans":70,    
-    "view":"10k",
+    "vote":10,
+    "ans":7,    
+    "view":"12",
     "title":"How to include multiple language development header in C++",
     "lang 1":"Python",
     "lang 2":"C++",
@@ -150,7 +150,7 @@
 ,{
     "vote":0,
     "ans":3,    
-    "view":"211",
+    "view":"21",
     "title":"C#/Java/Ruby - Hash Alogrthym for Passwords - Cross-Lang/Platform",
     "lang 1":"C#",
     "lang 2":"Java",
@@ -175,9 +175,9 @@
     "sumPro":"Tell me what to do, i will find how to do."
 }
 ,{
-    "vote":500,
-    "ans":150,    
-    "view":"30k",
+    "vote":5,
+    "ans":15,    
+    "view":"30",
     "title":"What makes other languages faster than Java in terms of Rapid Development? [closed]",
     "lang 1":"Ruby",
     "lang 2":"Python",

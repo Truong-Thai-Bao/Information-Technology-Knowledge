@@ -179,9 +179,10 @@ footer div:first-child{
 }
 .info{
     width: 150px;
+    left:-50px;
 }
 .info::after{
-    left:35px;
+    left:9px;
     border-width: 5px;
 }
 .text-min{
@@ -237,7 +238,20 @@ footer div:first-child{
     margin: 15px 0 6px;
 }
 #backtop{
-    right: 2rem;
+    right: 3.5rem;
     width: 30px;
     height: 30px;
+}
+.suggestion-list li{
+    padding: 5px;
+    font-size: 10px;
+}
+.suggestion-list{
+    width: 210px;
+}
+.wrapper h2{
+    font-size: 12px;
+}
+.wrapper form input,label{
+    font-size: 10px;
 }
